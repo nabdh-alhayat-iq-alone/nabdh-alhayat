@@ -3,156 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجهز نبض الحياة - الطلب الإلكتروني</title>
+    <title>مجهز نبض الحياة - المستلزمات الطبية</title>
     <style>
-        :root { --primary: #007bff; --secondary: #28a745; --dark: #343a40; --light: #f8f9fa; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #eee; margin: 0; padding: 10px; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        header { text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; }
-        .cart-status { background: var(--secondary); color: white; padding: 10px; border-radius: 10px; text-align: center; margin-bottom: 20px; font-weight: bold; position: sticky; top: 10px; z-index: 100; }
-        .product-card { border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px; background: #fff; }
-        .product-title { font-weight: bold; font-size: 17px; color: var(--primary); }
-        .product-desc { font-size: 13px; color: #666; margin: 5px 0; }
-        .price { color: var(--secondary); font-weight: bold; font-size: 18px; display: block; margin: 5px 0; }
-        .controls { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-        input[type="number"] { width: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 5px; text-align: center; }
-        .btn-add { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; flex-grow: 1; font-weight: bold; }
-        .btn-send { background: #25D366; color: white; border: none; padding: 15px; border-radius: 10px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; display: block; text-decoration: none; text-align: center; }
-        .section-title { background: var(--dark); color: white; padding: 7px 15px; border-radius: 5px; margin: 20px 0 10px 0; font-size: 16px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 0; text-align: center; color: #333; padding-bottom: 120px; }
+        
+        /* الشريط العلوي الثابت */
+        .top-bar { background-color: #004d40; color: white; padding: 12px; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
+        .top-link { color: white; text-decoration: none; font-size: 0.85em; font-weight: bold; background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); }
+        
+        .header { background: linear-gradient(135deg, #00796b, #004d40); color: white; padding: 40px 20px; margin-bottom: 30px; }
+        
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 0 15px; }
+        .card { background: white; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 280px; padding: 15px; border: 1px solid #ddd; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; border-radius: 10px; height: 180px; object-fit: cover; margin-bottom: 10px; }
+        
+        .price { font-weight: bold; color: #d32f2f; font-size: 1.25em; margin: 10px 0; }
+        .add-to-cart { background-color: #00796b; color: white; padding: 12px; border-radius: 30px; cursor: pointer; border: none; width: 100%; font-weight: bold; font-size: 1em; transition: 0.3s; }
+        .add-to-cart:hover { background-color: #004d40; }
+
+        /* سلة التسوق في الأسفل */
+        .cart-footer { position: fixed; bottom: 0; width: 100%; background: white; padding: 20px; box-shadow: 0 -5px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 2000; }
+        .cart-info { font-weight: bold; font-size: 1.1em; color: #004d40; }
+        .checkout-btn { background-color: #25D366; color: white; padding: 12px 40px; border-radius: 35px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+        .checkout-btn:hover { background-color: #128C7E; }
     </style>
 </head>
 <body>
 
+<div class="top-bar">
+    <a href="https://chat.whatsapp.com/F1iezExFzt783Id8uAEwrf" class="top-link" target="_blank">📢 انضم لقناتنا</a>
+    <a href="tel:07715052295" class="top-link">📞 طلب مباشر: 07715052295</a>
+</div>
+
+<div class="header">
+    <h1>مجهز نبض الحياة 🩺</h1>
+    <p>أرقى المستلزمات الطبية | البصرة - العزيزية</p>
+</div>
+
 <div class="container">
-    <header>
-        <h1 style="margin:0; font-size: 22px;">🩺 مجهز نبض الحياة</h1>
-        <p style="margin:5px 0; font-size: 14px;">للمستلزمات الطبية - العزيزية</p>
-    </header>
-
-    <div id="cart-counter" class="cart-status">السلة فارغة - اختر منتجاتك الآن</div>
-
-    <div class="section-title">📟 الأجهزة الطبية</div>
-    
-    <div class="product-card">
-        <div class="product-title">جهاز ضغط صمي</div>
-        <span class="price">7,000 د.ع</span>
-        <div class="controls">
-            <input type="number" id="qty_press" value="1" min="1">
-            <button class="btn-add" onclick="addToCart('جهاز ضغط صمي', 'qty_press', 7000)">إضافة للطلب +</button>
-        </div>
+    <div class="card">
+        <img src="masks.jpg" alt="كمامات">
+        <h3>كمامات سوداء (3 طبقات)</h3>
+        <p>كرتون 10 باكيت</p>
+        <p class="price">30,000 د.ع</p>
+        <button class="add-to-cart" onclick="addToCart('كمامات سوداء', 30000)">🛒 إضافة للسلة</button>
     </div>
 
-    <div class="product-card">
-        <div class="product-title">جهاز فحص السكر (ايزو الأصلي)</div>
-        <span class="price">15,000 د.ع</span>
-        <div class="controls">
-            <input type="number" id="qty_sugar" value="1" min="1">
-            <button class="btn-add" onclick="addToCart('جهاز فحص سكر ايزو', 'qty_sugar', 15000)">إضافة للطلب +</button>
-        </div>
+    <div class="card">
+        <img src="gloves.jpg" alt="كفوف">
+        <h3>كفوف (سكاي مِد) نيلي</h3>
+        <p>فحص طبي دقيق</p>
+        <p class="price">30,000 د.ع</p>
+        <button class="add-to-cart" onclick="addToCart('كفوف سكاي مد', 30000)">🛒 إضافة للسلة</button>
     </div>
 
-    <div class="product-card">
-        <div class="product-title">حافظ أنسولين</div>
-        <div class="product-desc">الكرتون يحتوي على 50 قطعة</div>
-        <span class="price">10,000 د.ع / قطعة</span>
-        <div class="controls">
-            <input type="number" id="qty_ins" value="1" min="1">
-            <button class="btn-add" onclick="addToCart('حافظ أنسولين', 'qty_ins', 10000)">إضافة للطلب +</button>
-        </div>
+    <div class="card">
+        <img src="bags.jpg" alt="أكياس">
+        <h3>أكياس صيدلية (5 كيلو)</h3>
+        <p>سادة ومطبوع</p>
+        <p class="price">15,000 د.ع</p>
+        <button class="add-to-cart" onclick="addToCart('أكياس صيدلية', 15000)">🛒 إضافة للسلة</button>
     </div>
 
-    <div class="section-title">🧤 قسم الكفوف</div>
-
-    <div class="product-card">
-        <div class="product-title">كفوف سوداء (فايف ستار)</div>
-        <div class="product-desc">كرتون (10 باكيت) - الباكيت 50 زوج</div>
-        <span class="price">30,000 د.ع / كرتون</span>
-        <div class="controls">
-            <input type="number" id="qty_black" value="1" min="1">
-            <button class="btn-add" onclick="addToCart('كفوف سوداء فايف ستار', 'qty_black', 30000)">إضافة للطلب +</button>
-        </div>
+    <div class="card">
+        <img src="insulin.jpg" alt="حافظة أنسولين">
+        <h3>حافظة أنسولين باردة</h3>
+        <p>حفظ طويل للسفر</p>
+        <p class="price">10,000 د.ع</p>
+        <button class="add-to-cart" onclick="addToCart('حافظة أنسولين', 10000)">🛒 إضافة للسلة</button>
     </div>
+</div>
 
-    <div class="product-card">
-        <div class="product-title">كفوف طبية (النجوم)</div>
-        <div class="product-desc">كرتون يحتوي على 10 باكيت</div>
-        <span class="price">37,000 د.ع / كرتون</span>
-        <div class="controls">
-            <input type="number" id="qty_stars" value="1" min="1">
-            <button class="btn-add" onclick="addToCart('كفوف النجوم', 'qty_stars', 37000)">إضافة للطلب +</button>
-        </div>
+<div class="cart-footer">
+    <div class="cart-info">
+        عدد المواد: <span id="cart-count">0</span> | المجموع: <span id="cart-total">0</span> د.ع
     </div>
-
-    <div class="section-title">🩹 اللواصق والضمادات</div>
-
-    <div class="product-card">
-        <div class="product-title">لاصق جروح</div>
-        <div class="product-desc">العلبة 48 باكيت - الكرتون (8 علب) 120,000 د.ع</div>
-        <span class="price">15,000 د.ع / علبة</span>
-        <div class="controls">
-            <input type="number" id="qty_plaster" value="1" min="1">
-            <button class="btn-add" onclick="addToCart('لاصق جروح', 'qty_plaster', 15000)">إضافة للطلب +</button>
-        </div>
-    </div>
-
-    <div class="section-title">🛍️ قسم الأكياس</div>
-
-    <div class="product-card">
-        <div class="product-title">أكياس صيدلية (علاقة)</div>
-        <div class="product-desc">1200 كيس (علاقة) جودة عالية</div>
-        <span class="price">60,000 د.ع</span>
-        <div class="controls">
-            <input type="number" id="qty_bags" value="1" min="1">
-            <button class="btn-add" onclick="addToCart('أكياس صيدلية (1200 كيس)', 'qty_bags', 60000)">إضافة للطلب +</button>
-        </div>
-    </div>
-
-    <button class="btn-send" onclick="sendToWhatsApp()">إرسال الطلب الكامل عبر واتساب 💬</button>
-
-    <footer style="text-align: center; margin-top: 30px; font-size: 11px; color: #888;">
-        &copy; 2026 مجهز نبض الحياة - العزيزية، العراق
-    </footer>
+    <a href="javascript:void(0)" class="checkout-btn" onclick="sendOrder()">إرسال الطلب عبر الواتساب 🚀</a>
 </div>
 
 <script>
-    let cart = [];
+    let cart = {};
+    let total = 0;
+    let itemCount = 0;
 
-    function addToCart(name, inputId, price) {
-        let qty = document.getElementById(inputId).value;
-        cart.push({ name, qty, price, total: qty * price });
-        updateCounter();
-        alert("تمت إضافة " + name + " للسلة");
-    }
-
-    function updateCounter() {
-        const counter = document.getElementById('cart-counter');
-        if(cart.length > 0) {
-            counter.innerHTML = `تم اختيار ${cart.length} منتجات - جاهز للإرسال`;
-            counter.style.background = "#28a745";
-        }
-    }
-
-    function sendToWhatsApp() {
-        if (cart.length === 0) {
-            alert("يرجى اختيار منتج واحد على الأقل");
-            return;
-        }
-
-        let message = "طلب جديد من مجهز نبض الحياة:\n\n";
-        let grandTotal = 0;
-
-        cart.forEach((item, index) => {
-            message += `${index + 1}. ${item.name} (الكمية: ${item.qty})\n`;
-            grandTotal += item.total;
-        });
-
-        message += `\nالمجموع التقريبي: ${grandTotal.toLocaleString()} د.ع`;
-        message += "\n\nيرجى التواصل لتأكيد الطلب وتفاصيل التوصيل.";
-
-        const whatsappUrl = `https://wa.me/9647737565169?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
-    }
-</script>
-
-</body>
-</html>
+    function addToCart(name, price) {
+        if (cart[name]) {
+            cart[name].qty += 1;
+        } else {
+            cart
