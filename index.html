@@ -3,222 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجهز نبض الحياة - جملة</title>
+    <title>مجهز نبض الحياة - المستلزمات الطبية</title>
     <style>
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; padding-bottom: 110px; direction: rtl;
-            background: linear-gradient(-45deg, #f4f7f6, #e3f2fd, #f1f8e9, #fce4ec);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-        header { background: rgba(255, 255, 255, 0.9); padding: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; border-top: 5px solid #0056b3; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(5px); }
-        h1 { color: #0056b3; margin: 0; font-size: 18px; }
-        
-        .promo-links { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-        .link-btn { padding: 8px 12px; border-radius: 20px; font-size: 11px; text-decoration: none; font-weight: bold; color: white; display: flex; align-items: center; gap: 5px; }
-        .wa-channel { background: #25D366; }
-        .direct-call { background: #0056b3; }
-
-        .list-container { max-width: 600px; margin: 15px auto; padding: 0 10px; }
-        .product-item { background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 15px; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
-        .product-item h3 { margin: 0 0 10px 0; font-size: 16px; color: #333; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px; }
-        
-        .price-row { display: flex; justify-content: space-between; margin: 5px 0; font-size: 13px; font-weight: bold; color: #28a745; }
-        .pack-info { font-size: 12px; color: #0056b3; background: #e3f2fd; padding: 4px 8px; border-radius: 5px; margin-bottom: 10px; display: inline-block; font-weight: bold; }
-        
-        .qty-ctrl { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px; }
-        .q-btn { width: 35px; height: 35px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-size: 20px; font-weight: bold; }
-        .add-small { background: #0056b3; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 14px; width: 100%; cursor: pointer; font-weight: bold; }
-
-        .cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.98); padding: 15px; box-shadow: 0 -3px 15px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; z-index: 100; backdrop-filter: blur(10px); }
-        .badge { background: #ff4757; color: white; padding: 2px 8px; border-radius: 50%; font-size: 12px; }
-
-        #cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto; }
-        .modal-body { background: white; width: 90%; max-width: 400px; margin: 20px auto; border-radius: 20px; padding: 20px; text-align: right; }
-        .input-field { width: 100%; padding: 12px; margin: 8px 0; border-radius: 10px; border: 1px solid #ddd; box-sizing: border-box; font-family: inherit; font-size: 14px; }
-        .send-btn { width: 100%; background: #25D366; color: white; border: none; padding: 15px; border-radius: 12px; font-size: 17px; font-weight: bold; cursor: pointer; margin-top: 15px; }
-
-        .channel-section { border-right: 5px solid #0056b3; margin-top: 30px; margin-bottom: 10px; padding: 10px; background: #e3f2fd; border-radius: 8px; text-align: center; font-weight: bold; color: #0056b3; }
+        :root { --primary: #007bff; --secondary: #28a745; --dark: #343a40; --light: #f8f9fa; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--light); margin: 0; padding: 15px; color: var(--dark); }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        header { text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 15px; margin-bottom: 20px; }
+        h1 { color: var(--primary); margin: 5px 0; font-size: 22px; }
+        .product-card { border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px; }
+        .product-title { font-weight: bold; font-size: 17px; }
+        .price { color: var(--secondary); font-weight: bold; font-size: 19px; }
+        .controls { display: flex; align-items: center; gap: 10px; margin: 5px 0; }
+        input[type="number"] { width: 50px; padding: 5px; border: 1px solid #ccc; border-radius: 5px; text-align: center; }
+        .btn-whatsapp { background-color: #25D366; color: white; text-decoration: none; padding: 10px; border-radius: 8px; text-align: center; font-weight: bold; display: block; }
+        .section-title { background: var(--primary); color: white; padding: 6px 12px; border-radius: 5px; margin: 20px 0 10px 0; font-size: 16px; }
     </style>
 </head>
 <body>
 
+<div class="container">
     <header>
         <h1>🩺 مجهز نبض الحياة للمستلزمات الطبية</h1>
-        <div class="promo-links">
-            <a href="https://chat.whatsapp.com/F1iezExFzt783Id8uAEwrf" target="_blank" class="link-btn wa-channel">🟢 القناة</a>
-            <a href="tel:07715052295" class="link-btn direct-call">📞 اتصال مباشر</a>
-        </div>
+        <p>تجهيز صيدليات ومذاخر - العزيزية / واسط</p>
     </header>
 
-    <div class="list-container">
-        
-        <div class="channel-section">📦 طلب سريع (أجهزة ومستهلكات)</div>
-
-        <div class="product-item">
-            <h3>جهاز ضغط معصمي (Digital)</h3>
-            <div class="price-row"><span>السعر:</span> <span>7,000 د.ع</span></div>
-            <div class="pack-info">📦 المحتوى: قطعة واحدة (جهاز فحص)</div>
-            <div class="qty-ctrl">
-                <button class="q-btn" onclick="chg('q1',-1)">-</button><span id="q1">1</span><button class="q-btn" onclick="chg('q1',1)">+</button>
-            </div>
-            <button class="add-small" onclick="add('جهاز ضغط معصمي', 7000, 'q1')">إضافة للطلب 🛒</button>
+    <div class="section-title">🧤 قسم الكفوف الطبية</div>
+    <div class="product-card">
+        <div class="product-title">كفوف فحص (سكاي مِد) - ماليزي</div>
+        <div class="price">30,000 د.ع / كارتون</div>
+        <div class="controls">
+            <label>الكمية:</label>
+            <input type="number" id="qty_gloves" value="1" min="1">
         </div>
-
-        <div class="product-item">
-            <h3>جهاز سكر ايزو الأصلي</h3>
-            <div class="price-row"><span>السعر:</span> <span>15,000 د.ع</span></div>
-            <div class="pack-info">📦 المحتوى: جهاز كامل مع الملحقات</div>
-            <div class="qty-ctrl">
-                <button class="q-btn" onclick="chg('q2',-1)">-</button><span id="q2">1</span><button class="q-btn" onclick="chg('q2',1)">+</button>
-            </div>
-            <button class="add-small" onclick="add('جهاز سكر ايزو', 15000, 'q2')">إضافة للطلب 🛒</button>
-        </div>
-
-        <div class="product-item">
-            <h3>حافظة أنسولين</h3>
-            <div class="price-row"><span>السعر:</span> <span>10,000 د.ع</span></div>
-            <div class="pack-info">📦 المحتوى: الكرتون يحتوي على 50 قطعة</div>
-            <div class="qty-ctrl">
-                <button class="q-btn" onclick="chg('q3',-1)">-</button><span id="q3">1</span><button class="q-btn" onclick="chg('q3',1)">+</button>
-            </div>
-            <button class="add-small" onclick="add('حافظة أنسولين', 10000, 'q3')">إضافة للطلب 🛒</button>
-        </div>
-
-        <div class="product-item">
-            <h3>باندج طبي (15 سم)</h3>
-            <div class="price-row"><span>سعر الكرتون:</span> <span>90,000 د.ع</span></div>
-            <div class="pack-info">📦 المحتوى: الكرتون يحتوي على 240 قطعة</div>
-            <div class="qty-ctrl">
-                <button class="q-btn" onclick="chg('q4',-1)">-</button><span id="q4">1</span><button class="q-btn" onclick="chg('q4',1)">+</button>
-            </div>
-            <button class="add-small" onclick="add('باندج طبي (كرتون)', 90000, 'q4')">إضافة كرتون 📦</button>
-        </div>
-
-        <div class="product-item">
-            <h3>كفوف سوداء (فايف ستار)</h3>
-            <div class="price-row"><span>سعر الكرتون:</span> <span>30,000 د.ع</span></div>
-            <div class="pack-info">📦 المحتوى: الكرتون 10 علب (العلبة 50 زوج)</div>
-            <div class="qty-ctrl">
-                <button class="q-btn" onclick="chg('q5',-1)">-</button><span id="q5">1</span><button class="q-btn" onclick="chg('q5',1)">+</button>
-            </div>
-            <button class="add-small" onclick="add('كفوف فايف ستار (كرتون)', 30000, 'q5')">إضافة كرتون 📦</button>
-        </div>
-
-        <div class="product-item">
-            <h3>كفوف طبية (النجوم)</h3>
-            <div class="price-row"><span>سعر الكرتون:</span> <span>37,000 د.ع</span></div>
-            <div class="pack-info">📦 المحتوى: الكرتون يحتوي على 10 علب</div>
-            <div class="qty-ctrl">
-                <button class="q-btn" onclick="chg('q6',-1)">-</button><span id="q6">1</span><button class="q-btn" onclick="chg('q6',1)">+</button>
-            </div>
-            <button class="add-small" onclick="add('كفوف النجوم (كرتون)', 37000, 'q6')">إضافة كرتون 📦</button>
-        </div>
-
-        <div class="product-item">
-            <h3>لاصق جروح (Best Aid)</h3>
-            <div class="price-row"><span>سعر الكرتون:</span> <span>120,000 د.ع</span></div>
-            <div class="pack-info">📦 المحتوى: الكرتون 8 علب (العلبة 15,000 د.ع)</div>
-            <div class="qty-ctrl">
-                <button class="q-btn" onclick="chg('q7',-1)">-</button><span id="q7">1</span><button class="q-btn" onclick="chg('q7',1)">+</button>
-            </div>
-            <button class="add-small" onclick="add('لاصق جروح (كرتون)', 120000, 'q7')">إضافة كرتون 📦</button>
-        </div>
-
-        <div class="channel-section" style="background: #fff3e0; color: #e65100; border-right-color: #e65100;">🩹 تصفح المزيد من المستلزمات في قناتنا</div>
-
-        <div class="product-item" style="border-right: 5px solid #0056b3;">
-            <h3>أجهزة طبية متطورة 🔬</h3>
-            <button class="add-small" onclick="window.open('https://chat.whatsapp.com/F1iezExFzt783Id8uAEwrf')">تصفح الصور والتفاصيل 📲</button>
-        </div>
-
+        <a href="#" class="btn-whatsapp" onclick="sendOrder('كفوف سكاي مد', 'qty_gloves', '30000')">اطلب الآن عبر واتساب 💬</a>
     </div>
 
-    <div class="cart-bar">
-        <div onclick="openCart()" style="cursor:pointer;">
-            🛒 <span class="badge" id="b-count">0</span>
-            <span id="t-total" style="font-weight:bold; color:#0056b3; margin-right:5px;">المجموع: 0 د.ع</span>
+    <div class="section-title">🛍️ قسم الأكياس الطبية</div>
+    <div class="product-card">
+        <div class="product-title">أكياس صيدلية (سادة) - 5 كيلو</div>
+        <div class="price">15,000 د.ع / رزمة</div>
+        <div class="controls">
+            <label>الكمية:</label>
+            <input type="number" id="qty_bags" value="1" min="1">
         </div>
-        <button class="add-small" style="width:auto; padding:10px 20px;" onclick="openCart()">إتمام الطلب</button>
+        <a href="#" class="btn-whatsapp" onclick="sendOrder('أكياس صيدلية سادة', 'qty_bags', '15000')">اطلب الآن عبر واتساب 💬</a>
     </div>
 
-    <div id="cart-modal">
-        <div class="modal-body">
-            <span onclick="openCart()" style="cursor:pointer; color:red; font-weight:bold; float:left;">✕ إغلاق</span>
-            <h3 style="border-bottom: 2px solid #eee; padding-bottom: 10px;">📋 تأكيد الطلب</h3>
-            <div id="cart-list" style="margin: 15px 0; font-size:14px; max-height:150px; overflow-y:auto;"></div>
-            <hr>
-            <input type="text" id="u-name" class="input-field" placeholder="اسم الصيدلية / المشتري">
-            <input type="tel" id="u-phone" class="input-field" placeholder="رقم الهاتف">
-            <select id="u-city" class="input-field">
-                <option value="" disabled selected>-- اختر المحافظة --</option>
-                <option value="واسط">واسط</option><option value="بغداد">بغداد</option><option value="البصرة">البصرة</option><option value="بابل">بابل</option><option value="النجف">النجف</option><option value="ذي قار">ذي قار</option>
-            </select>
-            <input type="text" id="u-area" class="input-field" placeholder="المنطقة / الحي السكني">
-
-            <button class="send-btn" onclick="sendOrder()">تأكيد وإرسال عبر واتساب ✅</button>
-        </div>
+    <div class="product-card">
+        <div class="product-title">أكياس صيدلية (مطبوعة) - حسب الطلب</div>
+        <p style="font-size: 13px; color: #666;">طباعة لوجو الصيدلية والاسم</p>
+        <a href="https://wa.me/9647737565169?text=السلام عليكم، أريد الاستفسار عن طباعة أكياس خاصة لصيدليتي من مجهز نبض الحياة" class="btn-whatsapp">استفسار عن الطباعة 🎨</a>
     </div>
 
-    <script>
-        let cart = [];
-        function chg(id, v) {
-            let s = document.getElementById(id);
-            let n = parseInt(s.innerText) + v;
-            if (n >= 1) s.innerText = n;
-        }
-        function add(n, p, qid) {
-            let q = parseInt(document.getElementById(qid).innerText);
-            cart.push({ n, p, q });
-            updateBar();
-            alert("تمت الإضافة للسلة ✅");
-        }
-        function updateBar() {
-            document.getElementById('b-count').innerText = cart.length;
-            let t = cart.reduce((s, i) => s + (i.p * i.q), 0);
-            document.getElementById('t-total').innerText = "المجموع: " + t.toLocaleString() + " د.ع";
-        }
-        function openCart() {
-            let m = document.getElementById('cart-modal');
-            m.style.display = (m.style.display == 'block') ? 'none' : 'block';
-            let l = document.getElementById('cart-list');
-            if (cart.length == 0) { l.innerHTML = "السلة فارغة"; return; }
-            l.innerHTML = cart.map(i => `<div style="margin-bottom:5px;">• ${i.n} (عدد ${i.q})</div>`).join('');
-            let total = cart.reduce((s, i) => s + (i.p * i.q), 0);
-            l.innerHTML += `<div style="font-weight:bold; color:#0056b3; margin-top:10px;">المجموع: ${total.toLocaleString()} د.ع</div>`;
-        }
+    <footer style="text-align: center; margin-top: 30px; font-size: 11px; color: #888;">
+        &copy; 2026 مجهز نبض الحياة - العزيزية، العراق
+    </footer>
+</div>
 
-        function sendOrder() {
-            let name = document.getElementById('u-name').value.trim();
-            let phone = document.getElementById('u-phone').value.trim();
-            let city = document.getElementById('u-city').value;
-            let area = document.getElementById('u-area').value.trim();
+<script>
+    function sendOrder(product, inputId, price) {
+        const qty = document.getElementById(inputId).value;
+        const total = qty * price;
+        const message = `السلام عليكم مجهز نبض الحياة، أريد طلب:\n- المنتج: ${product}\n- الكمية: ${qty}\n- السعر التقريبي: ${total.toLocaleString()} د.ع\nيرجى تأكيد الطلب وتفاصيل التوصيل.`;
+        const whatsappUrl = `https://wa.me/9647737565169?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
 
-            if (cart.length == 0 || !name || !phone || !city || !area) { 
-                alert("يرجى إكمال جميع البيانات لضمان وصول طلبك بشكل صحيح"); 
-                return; 
-            }
-
-            let msg = "*📦 طلب جملة جديد - نبض الحياة*\n";
-            msg += `*👤 المشتري:* ${name}\n*📞 الهاتف:* ${phone}\n*📍 المحافظة:* ${city}\n*🏠 المنطقة:* ${area}\n`;
-            msg += "------------------------------\n";
-            cart.forEach((i, idx) => {
-                msg += `${idx+1}. ${i.n} (x${i.q}) - ${(i.p*i.q).toLocaleString()} د.ع\n`;
-            });
-            let total = cart.reduce((s, i) => s + (i.p * i.q), 0);
-            msg += "------------------------------\n";
-            msg += `*💰 المجموع الكلي: ${total.toLocaleString()} د.ع*\n`;
-            msg += "تم الإرسال من متجر نبض الحياة الإلكتروني 🩺";
-
-            let bizNumber = "9647737565169";
-            window.open(`https://wa.me/${bizNumber}?text=` + encodeURIComponent(msg));
-        }
-    </script>
 </body>
 </html>
