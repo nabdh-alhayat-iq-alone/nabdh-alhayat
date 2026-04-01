@@ -7,30 +7,37 @@
     <style>
         :root { --primary: #00796b; --dark: #004d40; --accent: #25D366; }
         body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding-bottom: 220px; direction: rtl; }
+        
         .top-nav { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 15px; position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
-        .nav-btn { color: white; text-decoration: none; font-weight: bold; font-size: 0.85em; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2); }
+        .nav-btn { color: white; text-decoration: none; font-weight: bold; font-size: 0.9em; background: rgba(255,255,255,0.1); padding: 8px 18px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2); }
+
         .hero { background: linear-gradient(135deg, var(--primary), var(--dark)); color: white; padding: 40px 20px; text-align: center; }
+        .hero h1 { margin: 0; font-size: 2em; }
+
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 30px 15px; max-width: 1200px; margin: 0 auto; }
         .product-card { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; border: 1px solid #eee; }
         .product-card img { width: 100%; height: 180px; object-fit: contain; border-radius: 10px; background: #fafafa; }
+        
         .price-tag { color: #d32f2f; font-size: 1.3em; font-weight: bold; margin: 10px 0; }
         .add-btn { background: var(--primary); color: white; border: none; width: 100%; padding: 12px; border-radius: 10px; cursor: pointer; font-weight: bold; }
+
         .cart-panel { position: fixed; bottom: 0; left: 0; right: 0; background: white; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); padding: 20px; z-index: 2000; text-align: center; }
         .inputs-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
-        select, input { padding: 10px; border: 1px solid #ccc; border-radius: 8px; width: 180px; }
-        .send-btn { background: var(--accent); color: white; text-decoration: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; display: inline-block; margin-top: 10px; }
+        select, input { padding: 12px; border: 1px solid #ccc; border-radius: 8px; width: 180px; font-family: inherit; }
+        
+        .send-btn { background: var(--accent); color: white; text-decoration: none; padding: 15px 45px; border-radius: 35px; font-weight: bold; font-size: 1.1em; display: inline-block; box-shadow: 0 4px 10px rgba(37,211,102,0.3); }
     </style>
 </head>
 <body>
 
 <div class="top-nav">
-    <a href="https://chat.whatsapp.com/F1iezExFzt783Id8uAEwrf" class="nav-btn" target="_blank">📢 لمنتجات طبية أكثر انضم للقناة</a>
-    <a href="https://wa.me/9647715052295" class="nav-btn">📱 تحويل مباشر حيدر: 2295</a>
+    <a href="https://chat.whatsapp.com/F1iezExFzt783Id8uAEwrf" class="nav-btn" target="_blank">📢 انضم لقناة المنتجات</a>
+    <a href="https://wa.me/9647715052295" class="nav-btn">📱 تواصل مباشر عبر الواتساب ✅</a>
 </div>
 
 <div class="hero">
     <h1>🩺 مجهز نبض الحياة</h1>
-    <p>توصيل لكافة المحافظات - إدارة: حيدر</p>
+    <p>توصيل لكافة المحافظات - جودة وضمان</p>
 </div>
 
 <div class="products-grid">
@@ -41,31 +48,27 @@
         <div class="price-tag">115,000 د.ع</div>
         <button class="add-btn" onclick="addToCart('كرتون كمامات 100 باكيت', 115000)">🛒 إضافة للسلة</button>
     </div>
-    
     <div class="product-card">
-        <img src="gloves_black.jpg" alt="كفوف سوداء">
+        <img src="gloves_black.jpg" alt="كفوف">
         <h3>كفوف سوداء (فايف ستار)</h3>
         <p>كرتون 10 بواكيت</p>
         <div class="price-tag">30,000 د.ع</div>
         <button class="add-btn" onclick="addToCart('كرتون كفوف سوداء 10بواكيت', 30000)">🛒 إضافة للسلة</button>
     </div>
-
     <div class="product-card">
-        <img src="insulin.jpg" alt="حافظة أنسولين">
+        <img src="insulin.jpg" alt="حافظة">
         <h3>حافظة أنسولين (كومد)</h3>
         <p>كرتون 50 قطعة</p>
         <div class="price-tag">500,000 د.ع</div>
         <button class="add-btn" onclick="addToCart('كرتون حافظة انسولين 50ق', 500000)">🛒 إضافة للسلة</button>
     </div>
-
     <div class="product-card">
-        <img src="bags.jpg" alt="علاقة صيدلية">
+        <img src="bags.jpg" alt="علاقة">
         <h3>علاقة صيدلية (درجة أولى)</h3>
         <p>5 أكياس (1200 علاقة)</p>
         <div class="price-tag">60,000 د.ع</div>
         <button class="add-btn" onclick="addToCart('علاقة صيدلية 1200 كيس', 60000)">🛒 إضافة للسلة</button>
     </div>
-
     <div class="product-card">
         <img src="pressure_wrist.jpg" alt="جهاز ضغط">
         <h3>جهاز ضغط معصمي</h3>
@@ -73,15 +76,13 @@
         <div class="price-tag">700,000 د.ع</div>
         <button class="add-btn" onclick="addToCart('كرتون جهاز ضغط 100ج', 700000)">🛒 إضافة للسلة</button>
     </div>
-
     <div class="product-card">
-        <img src="gloves_stars.jpg" alt="كفوف نجوم">
+        <img src="gloves_stars.jpg" alt="كفوف">
         <h3>كفوف نجوم أزرق</h3>
-        <p>سعر الكرتون</p>
+        <p>سعر الكرتون الكامل</p>
         <div class="price-tag">37,000 د.ع</div>
         <button class="add-btn" onclick="addToCart('كرتون كفوف نجوم أزرق', 37000)">🛒 إضافة للسلة</button>
     </div>
-
     <div class="product-card">
         <img src="bandage.jpg" alt="باندج">
         <h3>باندج أخضر (15 سم)</h3>
@@ -89,15 +90,13 @@
         <div class="price-tag">90,000 د.ع</div>
         <button class="add-btn" onclick="addToCart('كرتون باندج أخضر 240ق', 90000)">🛒 إضافة للسلة</button>
     </div>
-
     <div class="product-card">
-        <img src="plaster.jpg" alt="لاصق جروح">
+        <img src="plaster.jpg" alt="لاصق">
         <h3>لاصق جروح (بيست أيد)</h3>
-        <p>العلبة 48 قطعة (8 علب بالكرتون)</p>
+        <p>العلبة 48 قطعة (الكرتون فيه 8 علب)</p>
         <div class="price-tag">15,000 د.ع</div>
         <button class="add-btn" onclick="addToCart('علبة لاصق جروح بيست أيد', 15000)">🛒 إضافة للسلة</button>
     </div>
-
     <div class="product-card">
         <img src="sugar_device.jpg" alt="جهاز سكر">
         <h3>جهاز سكر (كول بلس)</h3>
@@ -122,8 +121,8 @@
         </select>
         <input type="text" id="userDistrict" placeholder="القضاء أو الناحية">
     </div>
-    <div style="font-weight:bold;">المجموع: <span id="totalPrice">0</span> د.ع</div>
-    <a href="#" class="send-btn" onclick="checkout()">إرسال الطلب (واتساب 5169) 🚀</a>
+    <div style="font-weight:bold; margin-bottom: 10px;">المجموع الكلي: <span id="totalPrice">0</span> د.ع</div>
+    <a href="#" class="send-btn" onclick="checkout()">إرسال الطلب عبر الواتساب ✅</a>
 </div>
 
 <script>
@@ -133,15 +132,15 @@
         else { cart[name] = { price: price, qty: 1 }; }
         total += price;
         document.getElementById('totalPrice').innerText = total.toLocaleString();
-        alert('تمت إضافة ' + name);
+        alert('تمت إضافة ' + name + ' للسلة');
     }
     function checkout() {
         let city = document.getElementById('userCity').value;
         let district = document.getElementById('userDistrict').value;
-        if (!city || !district || total === 0) { alert('يرجى اختيار المحافظة وإضافة منتجات!'); return; }
+        if (!city || !district || total === 0) { alert('يرجى اختيار العنوان وإضافة منتجات!'); return; }
         let msg = "*طلب جملة جديد - نبض الحياة*%0A%0A*📍 العنوان:* " + city + " - " + district + "%0A%0A*📦 الطلبية:*%0A";
-        for (let key in cart) { msg += "- " + key + " (" + cart[key].qty + ")%0A"; }
-        msg += "%0A*💰 الإجمالي:* " + total.toLocaleString() + " د.ع";
+        for (let key in cart) { msg += "- " + key + " (العدد: " + cart[key].qty + ")%0A"; }
+        msg += "%0A*💰 المجموع:* " + total.toLocaleString() + " د.ع";
         window.open("https://wa.me/9647737565169?text=" + msg, "_blank");
     }
 </script>
