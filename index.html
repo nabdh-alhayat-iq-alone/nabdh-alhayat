@@ -6,153 +6,166 @@
     <title>مجهز نبض الحياة - المستلزمات الطبية</title>
     <style>
         :root { --primary: #00796b; --dark: #004d40; --accent: #25D366; --red: #d32f2f; --bg-price: #fff5f5; --bg-detail: #f0f7ff; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding-bottom: 240px; direction: rtl; color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f0f4f8; margin: 0; padding-bottom: 100px; direction: rtl; }
         
-        .top-nav { background: var(--dark); padding: 12px; display: flex; justify-content: center; gap: 15px; position: sticky; top: 0; z-index: 1000; }
-        .nav-btn { color: white; text-decoration: none; font-weight: bold; font-size: 0.85em; background: rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
-        .nav-btn:hover { background: var(--accent); }
+        /* الهيدر */
+        .top-nav { background: var(--dark); padding: 12px; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 1000; }
+        .nav-btn { color: white; text-decoration: none; font-weight: bold; font-size: 0.8em; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
 
-        .hero { background: linear-gradient(135deg, var(--primary), var(--dark)); color: white; padding: 45px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
+        .hero { background: linear-gradient(135deg, var(--primary), var(--dark)); color: white; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent); }
+
+        /* الشبكة */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .product-card { background: white; border-radius: 15px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; border: 1px solid #eee; }
+        .product-card img { width: 100%; height: 150px; object-fit: contain; margin-bottom: 10px; }
         
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; padding: 40px 15px; max-width: 1200px; margin: 0 auto; }
-        .product-card { background: white; border-radius: 20px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); text-align: center; border: 1px solid #eee; transition: 0.4s; position: relative; }
-        .product-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        .product-card img { width: 100%; height: 180px; object-fit: contain; border-radius: 15px; margin-bottom: 15px; }
-        
-        .pack-detail { background: var(--bg-detail); color: #0056b3; font-weight: bold; padding: 8px; border-radius: 10px; margin: 10px 0; font-size: 0.9em; border: 1px dashed #b3d7ff; }
-        .price-container { background: var(--bg-price); padding: 10px; border-radius: 12px; margin: 10px 0; }
-        .price-tag { color: var(--red); font-size: 1.5em; font-weight: 800; display: block; }
+        .pack-detail { background: var(--bg-detail); color: #0056b3; font-weight: bold; padding: 6px; border-radius: 8px; font-size: 0.85em; margin: 5px 0; }
+        .price-container { background: var(--bg-price); padding: 8px; border-radius: 10px; margin: 8px 0; }
+        .price-tag { color: var(--red); font-size: 1.3em; font-weight: bold; }
 
-        .add-btn { background: var(--primary); color: white; border: none; width: 100%; padding: 14px; border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .add-btn:hover { background: var(--dark); }
+        .add-btn { background: var(--primary); color: white; border: none; width: 100%; padding: 12px; border-radius: 10px; cursor: pointer; font-weight: bold; }
 
-        /* لوحة السلة السفلية */
-        .cart-panel { position: fixed; bottom: 0; left: 0; right: 0; background: white; box-shadow: 0 -10px 30px rgba(0,0,0,0.15); padding: 20px; z-index: 2000; text-align: center; border-radius: 25px 25px 0 0; }
-        .inputs-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
-        select, input { padding: 12px; border: 2px solid #e0e0e0; border-radius: 12px; width: 180px; outline: none; }
-        
-        /* قائمة المنتجات المضافة للمراجعة */
-        #cartItemsList { max-height: 150px; overflow-y: auto; margin-bottom: 15px; padding: 10px; background: #fafafa; border-radius: 10px; text-align: right; border: 1px solid #eee; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid #ddd; font-size: 0.9em; }
-        .remove-item { color: var(--red); cursor: pointer; font-weight: bold; background: #ffebeb; padding: 2px 8px; border-radius: 5px; border: none; }
+        /* سلة الموبايل العائمة (Floating Cart Icon) */
+        .floating-cart { position: fixed; bottom: 110px; left: 20px; background: var(--red); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 3000; border: none; font-size: 1.5em; }
+        .cart-count { position: absolute; top: 0; right: 0; background: white; color: var(--red); border-radius: 50%; width: 22px; height: 22px; font-size: 0.7em; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid var(--red); }
 
-        .total-box { font-size: 1.3em; font-weight: bold; margin-bottom: 15px; }
-        .send-btn { background: var(--accent); color: white; text-decoration: none; padding: 15px 50px; border-radius: 40px; font-weight: bold; display: inline-block; box-shadow: 0 6px 15px rgba(37,211,102,0.3); }
+        /* لوحة التحكم الثابتة أسفل الشاشة */
+        .bottom-panel { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 2000; }
+        .inputs-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 10px; }
+        select, input { padding: 10px; border: 1px solid #ccc; border-radius: 8px; width: 48%; font-size: 0.9em; }
+        .send-btn { background: var(--accent); color: white; text-decoration: none; padding: 12px; border-radius: 30px; font-weight: bold; display: block; text-align: center; font-size: 1.1em; }
+
+        /* نافذة مراجعة المنتجات (Modal) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 4000; align-items: center; justify-content: center; }
+        .modal-content { background: white; width: 90%; max-width: 400px; border-radius: 20px; padding: 20px; position: relative; max-height: 80vh; overflow-y: auto; }
+        .close-modal { position: absolute; top: 10px; left: 10px; font-size: 1.5em; cursor: pointer; color: #666; border: none; background: none; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .remove-btn { background: #ffebeb; color: var(--red); border: none; padding: 5px 10px; border-radius: 5px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <div class="top-nav">
     <a href="https://chat.whatsapp.com/F1iezExFzt783Id8uAEwrf" class="nav-btn" target="_blank">📢 قناة التحديثات</a>
-    <a href="https://wa.me/9647715052295" class="nav-btn">💬 تواصل مباشر (واتساب) ✅</a>
+    <a href="https://wa.me/9647715052295" class="nav-btn">💬 واتساب مباشر ✅</a>
 </div>
 
 <div class="hero">
     <h1>🩺 مجهز نبض الحياة</h1>
-    <p>المستلزمات الطبية بالجملة - إدارة حيدر</p>
+    <p>بإدارة: حيدر</p>
 </div>
 
 <div class="products-grid" id="grid">
-    <script>
-        const products = [
-            {name: 'كرتون كمامات 100 باكيت', img: 'masks.jpg', detail: '📦 كرتون 100 باكيت (مبطن أبيض)', price: 115000},
-            {name: 'كرتون كفوف سوداء (فايف ستار)', img: 'gloves_black.jpg', detail: '📦 كرتون يحتوي على 10 بواكيت', price: 30000},
-            {name: 'كرتون حافظة انسولين 50ق', img: 'insulin.jpg', detail: '📦 كرتون يحتوي على 50 قطعة', price: 500000},
-            {name: 'علاقة صيدلية 1200 كيس', img: 'bags.jpg', detail: '🛍️ 5 أكياس كبيرة (1200 علاقة)', price: 60000},
-            {name: 'كرتون جهاز ضغط 100ج', img: 'pressure_wrist.jpg', detail: '📊 كرتون يحتوي على 100 جهاز', price: 700000},
-            {name: 'كرتون كفوف نجوم أزرق', img: 'gloves_stars.jpg', detail: '📦 سعر الجملة للكرتون الكامل', price: 37000},
-            {name: 'كرتون باندج أخضر 240ق', img: 'bandage.jpg', detail: '📦 كرتون يحتوي على 240 قطعة', price: 90000},
-            {name: 'علبة لاصق جروح بيست أيد', img: 'plaster.jpg', detail: '🩹 علبة 48 قطعة (الكرتون 8 علب)', price: 15000},
-            {name: 'جهاز سكر كول بلس', img: 'sugar_device.jpg', detail: '🩺 جهاز دقيق وسهل الاستخدام', price: 15000}
-        ];
+    </div>
 
-        let grid = document.getElementById('grid');
+<button class="floating-cart" onclick="toggleModal()">
+    🛒 <span id="cartCount" class="cart-count">0</span>
+</button>
+
+<div id="cartModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="toggleModal()">✕</button>
+        <h3>📦 مراجعة طلبيتك</h3>
+        <div id="modalItems"></div>
+        <hr>
+        <div style="text-align:center; font-weight:bold; font-size: 1.2em;">المجموع: <span id="modalTotal">0</span> د.ع</div>
+        <br>
+        <button class="add-btn" onclick="toggleModal()" style="background:#666">إغلاق المراجعة وتكملة التسوق</button>
+    </div>
+</div>
+
+<div class="bottom-panel">
+    <div class="inputs-row">
+        <select id="userCity">
+            <option value="">المحافظة</option>
+            <option value="البصرة">البصرة</option><option value="بغداد">بغداد</option>
+            <option value="واسط">واسط</option><option value="ذي قار">ذي قار</option>
+            <option value="بابل">بابل</option><option value="ميسان">ميسان</option>
+        </select>
+        <input type="text" id="userDistrict" placeholder="القضاء/الناحية">
+    </div>
+    <div style="text-align:center; margin-bottom:5px; font-weight:bold;">الإجمالي: <span id="panelTotal">0</span> د.ع</div>
+    <a href="#" class="send-btn" onclick="checkout()">إرسال الطلب (واتساب) 🚀</a>
+</div>
+
+<script>
+    const products = [
+        {id: 1, name: 'كمامات سوداء 100 باكيت', img: 'masks.jpg', detail: '📦 كرتون (مبطن أبيض)', price: 115000},
+        {id: 2, name: 'كفوف سوداء (فايف ستار)', img: 'gloves_black.jpg', detail: '📦 كرتون 10 بواكيت', price: 30000},
+        {id: 3, name: 'حافظة انسولين 50ق', img: 'insulin.jpg', detail: '📦 كرتون 50 قطعة', price: 500000},
+        {id: 4, name: 'علاقة صيدلية 1200 كيس', img: 'bags.jpg', detail: '🛍️ 5 أكياس كبيرة', price: 60000},
+        {id: 5, name: 'جهاز ضغط 100ج', img: 'pressure_wrist.jpg', detail: '📊 كرتون 100 جهاز', price: 700000},
+        {id: 6, name: 'كفوف نجوم أزرق', img: 'gloves_stars.jpg', detail: '📦 سعر الجملة للكرتون', price: 37000},
+        {id: 7, name: 'باندج أخضر 240ق', img: 'bandage.jpg', detail: '📦 كرتون 240 قطعة', price: 90000},
+        {id: 8, name: 'لاصق جروح بيست أيد', img: 'plaster.jpg', detail: '🩹 علبة 48 قطعة', price: 15000},
+        {id: 9, name: 'جهاز سكر كول بلس', img: 'sugar_device.jpg', detail: '🩺 جهاز دقيق وسهل', price: 15000}
+    ];
+
+    let cart = {}; let total = 0; let count = 0;
+
+    function renderProducts() {
+        const grid = document.getElementById('grid');
         products.forEach(p => {
             grid.innerHTML += `
                 <div class="product-card">
-                    <img src="${p.img}" alt="${p.name}">
-                    <h3>${p.name}</h3>
+                    <img src="${p.img}">
+                    <h4>${p.name}</h4>
                     <div class="pack-detail">${p.detail}</div>
                     <div class="price-container"><span class="price-tag">${p.price.toLocaleString()} د.ع</span></div>
                     <button class="add-btn" onclick="addToCart('${p.name}', ${p.price})">🛒 إضافة للسلة</button>
                 </div>
             `;
         });
-    </script>
-</div>
-
-<div class="cart-panel">
-    <div id="cartItemsList" style="display:none;"></div> <div class="inputs-row">
-        <select id="userCity">
-            <option value="">اختر المحافظة</option>
-            <option value="البصرة">البصرة</option><option value="بغداد">بغداد</option>
-            <option value="واسط">واسط</option><option value="ذي قار">ذي قار</option>
-            <option value="بابل">بابل</option><option value="ميسان">ميسان</option>
-        </select>
-        <input type="text" id="userDistrict" placeholder="القضاء أو الناحية">
-    </div>
-    
-    <div class="total-box">المجموع: <span id="totalPrice">0</span> د.ع</div>
-    <a href="#" class="send-btn" onclick="checkout()">إرسال الطلب عبر الواتساب ✅</a>
-</div>
-
-<script>
-    let cart = {}; let total = 0;
+    }
 
     function addToCart(name, price) {
         if (cart[name]) { cart[name].qty += 1; } 
         else { cart[name] = { price: price, qty: 1 }; }
-        total += price;
+        total += price; count += 1;
         updateUI();
     }
 
     function removeItem(name) {
-        if (cart[name].qty > 1) {
-            cart[name].qty -= 1;
-        } else {
-            delete cart[name];
-        }
-        // إعادة حساب المجموع الكلي
-        recalculateTotal();
+        total -= cart[name].price;
+        count -= 1;
+        if (cart[name].qty > 1) { cart[name].qty -= 1; } 
+        else { delete cart[name]; }
         updateUI();
     }
 
-    function recalculateTotal() {
-        total = 0;
+    function updateUI() {
+        document.getElementById('panelTotal').innerText = total.toLocaleString();
+        document.getElementById('modalTotal').innerText = total.toLocaleString();
+        document.getElementById('cartCount').innerText = count;
+        
+        const modalItems = document.getElementById('modalItems');
+        modalItems.innerHTML = "";
         for (let key in cart) {
-            total += (cart[key].price * cart[key].qty);
+            modalItems.innerHTML += `
+                <div class="cart-item">
+                    <span>${key} (x${cart[key].qty})</span>
+                    <button class="remove-btn" onclick="removeItem('${key}')">حذف ❌</button>
+                </div>
+            `;
         }
     }
 
-    function updateUI() {
-        document.getElementById('totalPrice').innerText = total.toLocaleString();
-        const list = document.getElementById('cartItemsList');
-        
-        if (Object.keys(cart).length > 0) {
-            list.style.display = 'block';
-            list.innerHTML = '<strong>مراجعة طلبك:</strong><br>';
-            for (let key in cart) {
-                list.innerHTML += `
-                    <div class="cart-item">
-                        <span>${key} (عدد: ${cart[key].qty})</span>
-                        <button class="remove-item" onclick="removeItem('${key}')">حذف منتج ❌</button>
-                    </div>
-                `;
-            }
-        } else {
-            list.style.display = 'none';
-        }
+    function toggleModal() {
+        const modal = document.getElementById('cartModal');
+        modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
     }
 
     function checkout() {
         let city = document.getElementById('userCity').value;
         let district = document.getElementById('userDistrict').value;
-        if (!city || !district || total === 0) { alert('أكمل بياناتك واختر منتجاتك!'); return; }
+        if (!city || !district || total === 0) { alert('أكمل العنوان واختر منتجاتك!'); return; }
         let msg = "*طلب جملة جديد - نبض الحياة*%0A%0A*📍 العنوان:* " + city + " - " + district + "%0A%0A*📦 الطلبية:*%0A";
-        for (let key in cart) { msg += "- " + key + " (العدد: " + cart[key].qty + ")%0A"; }
+        for (let key in cart) { msg += "- " + key + " (" + cart[key].qty + ")%0A"; }
         msg += "%0A*💰 الإجمالي:* " + total.toLocaleString() + " د.ع";
         window.open("https://wa.me/9647737565169?text=" + msg, "_blank");
     }
+
+    renderProducts();
 </script>
 </body>
 </html>
